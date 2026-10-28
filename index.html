@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111b50">
+  <meta name="description" content="Johnny Builds to Mars — Parker & Pine's interactive space adventure.">
+  <title>Johnny Builds to Mars | Parker & Pine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="storybook" id="storybook">
+    <header class="topbar">
+      <a class="brand" href="#story-0" aria-label="Parker and Pine home"><span class="brand-pine" aria-hidden="true">✦</span><span>Parker &amp; Pine</span></a>
+      <div class="progress-wrap" aria-label="Story progress"><span id="progress-label">Supplies</span><span class="progress-track"><span id="progress-bar"></span></span><span id="page-count">1 / 5</span></div>
+      <nav class="story-pager" aria-label="Story pages">
+        <button type="button" data-pager="0" aria-label="Go to Supplies" aria-current="page">1</button>
+        <button type="button" data-pager="1" aria-label="Go to The garage">2</button>
+        <button type="button" data-pager="2" aria-label="Go to Blast off">3</button>
+        <button type="button" data-pager="3" aria-label="Go to Mars">4</button>
+      </nav>
+    </header>
+
+    <section class="book-stage" id="book-stage" tabindex="-1" aria-label="Johnny Builds to Mars interactive storybook">
+      <div class="paper-speckles" aria-hidden="true"></div>
+
+      <article class="story-slide supplies-slide is-active" data-slide="0" id="story-0" aria-labelledby="supplies-title">
+        <div class="slide-number">01</div>
+        <div class="slide-copy">
+          <p class="eyebrow aqua-eyebrow">Around the house</p>
+          <h2 id="supplies-title">Gather, gather.<br>Pack the <em>useful</em> stuff!</h2>
+          <p>Johnny raced from room to room: a blanket from the sofa, boots by the door, a wrench from the shed, and a blueprint from the kitchen table.</p>
+          <div class="activity-card"><strong>Pack the blanket, boots, wrench, and blueprint into the crate.</strong><span><b id="supply-count">0</b> / 4 packed</span></div>
+        </div>
+        <div class="scene supplies-scene" id="supplies-scene" aria-label="House supplies waiting to be packed">
+          <div class="house-wall"></div><div class="house-floor"></div><div class="supply-shelf"><span>HOME BASE</span></div>
+          <button class="supply-item supply-blanket" data-supply="blanket" draggable="true" type="button" aria-label="Pack the blanket">▰<small>blanket</small></button>
+          <button class="supply-item supply-boots" data-supply="boots" draggable="true" type="button" aria-label="Pack the boots">◒<small>boots</small></button>
+          <button class="supply-item supply-wrench" data-supply="wrench" draggable="true" type="button" aria-label="Pack the wrench">⚒<small>wrench</small></button>
+          <button class="supply-item supply-blueprint" data-supply="blueprint" draggable="true" type="button" aria-label="Pack the blueprint">▤<small>blueprint</small></button>
+          <div class="supply-crate" id="supply-crate" tabindex="0" role="button" aria-label="Supply crate drop zone"><span>PACK<br>ME</span></div>
+          <div class="supply-sparkles" aria-hidden="true">✦ ✧ ✦</div>
+        </div>
+      </article>
+
+      <article class="story-slide garage-slide" data-slide="1" id="story-1" aria-labelledby="garage-title" hidden>
+        <div class="slide-number">02</div>
+        <div class="slide-copy">
+          <p class="eyebrow coral-eyebrow">The garage</p>
+          <h2 id="garage-title">Draw it brave.<br>Make it <em>yours.</em></h2>
+          <p>Johnny opened his sketchbook. One step at a time, he drew a nose, a body, a window, and fins for his very own rocket.</p>
+          <div class="rocket-builder" id="rocket-builder">
+            <strong>Build your rocket one drawing step at a time.</strong>
+            <div class="drawing-step-count" id="drawing-step-count" aria-live="polite">Step 1 of 4: draw the nose</div>
+            <div class="drawing-step-list" aria-label="Rocket drawing steps"><span class="is-current" data-drawing-step="0">1 Nose</span><span data-drawing-step="1">2 Body</span><span data-drawing-step="2">3 Window</span><span data-drawing-step="3">4 Fins</span></div>
+            <div class="drawing-palette" role="group" aria-label="Rocket drawing colors"><button class="color-swatch is-selected" data-color="#f06460" type="button" aria-label="Coral red" style="--swatch:#f06460"></button><button class="color-swatch" data-color="#ffd34e" type="button" aria-label="Sun yellow" style="--swatch:#ffd34e"></button><button class="color-swatch" data-color="#42c6d3" type="button" aria-label="Aqua" style="--swatch:#42c6d3"></button><button class="color-swatch" data-color="#7b63d8" type="button" aria-label="Violet" style="--swatch:#7b63d8"></button><button class="color-swatch" data-color="#ff8b4d" type="button" aria-label="Orange" style="--swatch:#ff8b4d"></button><button class="color-swatch" data-color="#fff4d0" type="button" aria-label="Cream" style="--swatch:#fff4d0"></button></div>
+            <canvas id="rocket-canvas" width="360" height="250" aria-label="Draw the current rocket part with your pointer or finger"></canvas>
+            <div class="drawing-actions"><button class="drawing-button" id="clear-rocket-drawing" type="button">Clear this step</button><button class="drawing-button drawing-clear-all" id="clear-all-rocket-drawing" type="button">Clear entire pad</button><button class="drawing-button drawing-save" id="save-rocket-part" type="button">Save nose</button></div>
+            <span class="drawing-save-message" id="rocket-save-message" aria-live="polite">Choose a color, draw the nose, and save it. Your drawing saves automatically.</span>
+          </div>
+        </div>
+        <div class="scene garage-scene" aria-label="Johnny building a rocket in the garage while his dog judges him">
+          <div class="garage-window"><i>✦</i><i>✧</i><i>✦</i></div><div class="garage-sign">JOHNNY'S GARAGE</div>
+          <canvas id="garage-rocket-canvas" class="garage-rocket-canvas" width="360" height="250" aria-label="Your saved rocket drawing appears here"></canvas>
+          <button class="judging-dog" id="judging-dog" type="button" aria-label="Ask the dog for an opinion"><span class="dog-ear left-ear"></span><span class="dog-ear right-ear"></span><span class="dog-eye eye-left"></span><span class="dog-eye eye-right"></span><span class="dog-muzzle"></span><span class="dog-body"></span><span class="dog-tail"></span><span class="dog-bubble" id="dog-bubble" aria-live="polite">Hmm.</span></button>
+          <div class="garage-floor"></div>
+        </div>
+      </article>
+
+      <article class="story-slide blastoff-slide" data-slide="2" id="story-2" aria-labelledby="blastoff-title" hidden>
+        <div class="slide-number">03</div>
+        <div class="slide-copy">
+          <p class="eyebrow red-eyebrow">The big blast</p>
+          <h2 id="blastoff-title">Johnny pulled<br>the <em>lever.</em></h2>
+          <p>The garage doors flew open. The dog’s ears popped up. Johnny grinned and gave the launch lever one mighty pull.</p>
+          <div class="activity-card"><strong>Hold the lever to charge Johnny's rocket.</strong><span id="launch-message" aria-live="polite">Ready when you are!</span><div class="launch-meter"><span id="launch-bar"></span></div></div>
+          <button class="launch-lever" id="launch-lever" type="button" aria-label="Hold to charge the launch"><span>↟</span> HOLD TO BLAST OFF</button>
+        </div>
+        <div class="scene blastoff-scene" aria-label="Johnny blasting off in his rocket">
+          <div class="launch-cloud cloud-one"></div><div class="launch-cloud cloud-two"></div><div class="launch-cloud cloud-three"></div>
+          <div class="blast-rocket" id="blast-rocket"><canvas id="launch-rocket-canvas" class="launch-rocket-canvas" width="360" height="250" aria-label="Johnny's saved rocket drawing"></canvas><div class="rocket-window"></div><div class="rocket-fin fin-left"></div><div class="rocket-fin fin-right"></div><div class="rocket-flame"></div><span class="rocket-rivet rivet-one"></span><span class="rocket-rivet rivet-two"></span></div>
+          <div class="countdown" id="countdown" aria-live="polite"></div>
+          <div class="launch-sky-stars" aria-hidden="true">✦ &nbsp; ✧ &nbsp; ✦ &nbsp; ✧ &nbsp; ✦</div>
+        </div>
+      </article>
+
+      <article class="story-slide mars-slide" data-slide="3" id="story-3" aria-labelledby="mars-title" hidden>
+        <div class="slide-number">04</div>
+        <div class="slide-copy">
+          <p class="eyebrow mars-eyebrow">A soft landing</p>
+          <h2 id="mars-title">Mars was dusty.<br>Mars was <em>home.</em></h2>
+          <p>Thump! Johnny landed beside a red hill. He hopped out, planted a flag, and looked around at the quiet, wonderful planet.</p>
+          <div class="activity-card"><strong>Tap three spots to explore Mars.</strong><span><b id="explore-count">0</b> / 3 discoveries</span></div>
+        </div>
+        <div class="scene mars-scene" id="mars-scene" aria-label="Johnny exploring the red surface of Mars">
+          <div class="mars-sun"></div><div class="mars-mountain mountain-left"></div><div class="mars-mountain mountain-right"></div><div class="mars-ground"></div>
+          <button class="explore-spot explore-one" data-explore="rock" type="button" aria-label="Explore a Mars rock">?</button><button class="explore-spot explore-two" data-explore="hill" type="button" aria-label="Explore a Mars hill">?</button><button class="explore-spot explore-three" data-explore="dust" type="button" aria-label="Explore Mars dust">?</button>
+          <div class="mars-flag">★</div><div class="mars-johnny" aria-hidden="true"><div class="helmet"></div><div class="body"></div><div class="boot boot-left"></div><div class="boot boot-right"></div></div>
+          <div class="mars-speech" id="mars-speech" aria-live="polite">What a planet!</div>
+        </div>
+      </article>
+
+      <article class="story-slide snack-slide" data-slide="4" id="story-4" aria-labelledby="snack-title" hidden>
+        <div class="slide-number">05</div>
+        <div class="slide-copy">
+          <p class="eyebrow yellow-eyebrow">The snack finale</p>
+          <h2 id="snack-title">Johnny made it<br>to Mars… <em>but!</em></h2>
+          <p>He checked the crate. He checked the rocket. He checked his pockets. “Oh no,” said Johnny. “I forgot the snacks.”</p>
+          <div class="snack-pouch" id="snack-pouch" role="slider" tabindex="0" aria-label="Slide the snack pouch open" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="pouch-flap" aria-hidden="true">SNACK POUCH</span>
+            <span class="pouch-bottom-flap" aria-hidden="true"></span>
+            <span class="pouch-track" aria-hidden="true"><span class="pouch-handle">↔</span></span>
+            <span class="pouch-reveal" id="pouch-reveal" aria-live="polite"><span class="single-crumb" aria-hidden="true">•</span><strong>THE END</strong></span>
+          </div>
+          <p class="snack-reveal" id="snack-reveal" aria-live="polite">Slide the pouch from left to right.</p>
+        </div>
+        <div class="scene snack-scene" aria-label="Johnny on Mars discovering his empty snack pouch">
+          <div class="snack-mars"></div><div class="snack-earth"></div><canvas id="snack-rocket-canvas" class="story-rocket-canvas snack-rocket-canvas" width="360" height="250" aria-label="Your saved rocket on Mars"></canvas>
+          <div class="snack-stars" aria-hidden="true">✦ ✧ ✦</div>
+        </div>
+      </article>
+
+      <button class="page-arrow arrow-left" id="prev-button" type="button" aria-label="Previous page" disabled><span aria-hidden="true">←</span></button>
+      <button class="page-arrow arrow-right" id="next-button" type="button" aria-label="Next page"><span aria-hidden="true">→</span></button>
+
+    </section>
+    <footer class="book-footer"><span>Johnny Builds to Mars</span><span aria-hidden="true">•</span><span>By Parker &amp; Pine</span></footer>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
